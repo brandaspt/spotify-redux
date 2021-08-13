@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { secsToMins } from "../../assets/helpers";
 import { HeartFill, Heart } from "react-bootstrap-icons";
 import { connect } from "react-redux";
+import PlayPauseBtn from "../PlayPauseButton/PlayPauseBtn"
 
 import { likeSongAction, dislikeSongAction } from "../../redux/actions/actions";
 
@@ -18,7 +19,10 @@ const TrackCard = (props) => {
   return (
     <Col className="mb-4" xs={12} sm={6} md={4} lg={3}>
       <Card className="h-100 bg-transparent border-0 content-card">
-        <Card.Img variant="top" src={props.trackObj.album.cover_medium} />
+        <div className="position-relative">
+          <Card.Img variant="top" src={props.trackObj.album.cover_medium} />
+          <PlayPauseBtn songObj={props.trackObj} />
+        </div>
         <Card.Body className="p-2 bg-transparent">
           <Card.Title className="m-0 text-center text-white">
             {props.trackObj.title}

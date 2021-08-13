@@ -11,7 +11,6 @@ const currentSongReducer = (state = initialState.currentSong, action) => {
       return { ...state, playing: false };
     default:
       return state;
-      break;
   }
 };
 
