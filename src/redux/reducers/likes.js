@@ -7,10 +7,11 @@ const likesReducer = (state = initialState.likes, action) => {
       return { ...state, songs: [...state.songs, action.payload] };
 
     case types.DISLIKE_SONG:
-      const modifiedFavs = [
-        { ...state.songs.filter((song) => song.id !== action.payload.id) },
-      ];
-      return { ...state, songs: modifiedFavs };
+      return {
+        ...state,
+        songs: state.songs.filter((song) => song.id !== action.payload),
+      };
+
     default:
       return state;
   }

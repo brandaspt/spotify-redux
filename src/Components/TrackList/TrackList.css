@@ -1,13 +1,13 @@
-#heartfill {
+.heartfill_tracklist {
   align-self: center;
   cursor: pointer;
 }
 
-#heart {
+.heart_tracklist {
   cursor: pointer;
   opacity: 0.1;
 }
 
-#heart:hover {
+#heart_tracklist:hover {
   opacity: 1;
 }

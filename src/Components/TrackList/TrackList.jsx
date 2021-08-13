@@ -8,6 +8,7 @@ import {
 } from "../../redux/actions/actions.js";
 import { HeartFill, Heart } from "react-bootstrap-icons";
 import "./TrackList.css";
+
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch) => ({
   likeSong: (songObj) => dispatch(likeSongAction(songObj)),
@@ -31,8 +32,6 @@ class TrackList extends React.Component {
           </Row>
           {this.props.tracks.map((track, i) => (
             <Row key={track.id} className="py-2 text-white">
-              {console.log("track id", track.id)}
-
               <Col className="text-center" md={1}>
                 <p className="mx-2 my-0 text-muted">{i + 1}</p>
               </Col>
@@ -42,18 +41,19 @@ class TrackList extends React.Component {
               <Col className="text-center" md={1}>
                 <p className="my-0 text-muted">{secsToMins(track.duration)}</p>
               </Col>
-              <Col style={{ width: "20px" }}>
-                {this.props.likes.songs.find(
-                  (_track) => _track.id === this.props.track.id
-                ) ? (
+              <Col>
+                {this.props.likes.songs.find((_track) => {
+                  console.log("track id", track.id);
+                  return _track.id === track.id;
+                }) ? (
                   <HeartFill
-                    id="heartfill"
-                    onClick={() => this.props.dislikeSong(this.props.track)}
+                    className="heartfill_tracklist"
+                    onClick={() => this.props.dislikeSong(track.id)}
                   />
                 ) : (
                   <Heart
-                    id="heart"
-                    onClick={() => this.props.likeSong(this.props.track)}
+                    className="heart_tracklist"
+                    onClick={() => this.props.likeSong(track)}
                   />
                 )}
               </Col>
