@@ -10,7 +10,7 @@ const currentSongReducer = (state = initialState.currentSong, action) => {
     case types.PAUSE_SONG:
       return { ...state, playing: false }
     default:
-      break
+      return state
   }
 }
 
