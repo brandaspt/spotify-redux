@@ -1,31 +1,30 @@
-import React from "react"
-import { Row, Col } from "react-bootstrap"
+import React from 'react';
+import { Row, Col } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 
-import "./Player.css"
+import './Player.css';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import AudioPlayer from 'material-ui-audio-player';
 
 function Player(props) {
-  return (
-    <footer className="player">
-      <Row className="border-top border-secondary">
-        <Col xs={3}>
-          <div className="track-info d-flex align-items-center p-2">
-            <img src="https://via.placeholder.com/150" width="50px" alt="" />
+  const dispatch = useDispatch();
+  const songToPlay = useSelector((state) => state.currentSong.songObj.preview);
+  console.log(songToPlay);
 
-            <div className="d-flex flex-column text-white">
-              <p className="font-weight-bold">Track Name</p>
-              <p>Artist</p>
-            </div>
-          </div>
-        </Col>
-        <Col xs={6}>
-          <div className="controls"></div>
-        </Col>
-        <Col xs={3}>
-          <div className="extra-controls"></div>
-        </Col>
-      </Row>
+  return (
+    <footer className='player'>
+      <AudioPlayer
+        elevation={1}
+        width='500px'
+        variation='primary'
+        download={false}
+        loop={true}
+        debug={false}
+        src={songToPlay}
+      />
+      <Row className='border-top border-secondary'></Row>
     </footer>
-  )
+  );
 }
 
-export default Player
+export default Player;
