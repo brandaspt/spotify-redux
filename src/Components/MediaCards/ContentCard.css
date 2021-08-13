@@ -6,3 +6,30 @@
   font-size: 14px;
   color: rgb(155, 155, 155);
 }
+
+.content-card .PlayPauseBtn {
+  background-color: #1db954;
+  color: white;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  box-shadow: 0 0 10px black;
+  transition: all 0.3s;
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.content-card:hover .PlayPauseBtn {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.content-card .PlayPauseBtn:hover,
+.content-card .PlayPauseBtn.playing:hover {
+  transform: scale(1.2);
+}
+
+.content-card .PlayPauseBtn.playing {
+  opacity: 1;
+  transform: scaleY(1);
+}

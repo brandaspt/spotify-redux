@@ -1,5 +1,6 @@
 import { secsToMins } from "../../assets/helpers"
 import { Col, Row } from "react-bootstrap"
+import PlayPauseBtn from "../PlayPauseButton/PlayPauseBtn"
 
 const TrackList = props => {
   return (
@@ -18,8 +19,11 @@ const TrackList = props => {
           <Col className="text-center" md={1}>
             <p className="mx-2 my-0 text-muted">{i + 1}</p>
           </Col>
-          <Col md={10}>
+          <Col md={9}>
             <p className="my-0">{track.title}</p>
+          </Col>
+          <Col md={1}>
+            <PlayPauseBtn songObj={track} />
           </Col>
           <Col className="text-center" md={1}>
             <p className="my-0 text-muted">{secsToMins(track.duration)}</p>

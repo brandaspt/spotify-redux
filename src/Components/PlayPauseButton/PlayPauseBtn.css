@@ -1,0 +1,17 @@
+.PlayPauseBtn {
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 5px grey;
+  height: 28px;
+  width: 28px;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.PlayPauseBtn:hover {
+  transform: scale(1.1);
+}
