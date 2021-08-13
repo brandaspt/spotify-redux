@@ -1,0 +1,15 @@
+.album-details {
+  background-color: rgb(24, 24, 24);
+}
+
+.album-details .hero-section {
+  background: rgb(32, 32, 32);
+  background: linear-gradient(0deg, rgba(32, 32, 32, 1) 22%, rgba(82, 82, 82, 1) 100%);
+}
+
+.album-details .hero-section i {
+  font-size: 10px;
+}
+.album-details img {
+  box-shadow: 0 0 30px black;
+}

@@ -1,0 +1,10 @@
+.App {
+  background: rgb(0, 108, 42);
+  background: linear-gradient(315deg, rgba(0, 108, 42, 1) 22%, rgba(0, 0, 0, 1) 100%);
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 90vh;
+  width: calc(100vw - 200px);
+  overflow-y: scroll;
+}

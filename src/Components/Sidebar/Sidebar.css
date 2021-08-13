@@ -1,0 +1,22 @@
+.sidebar {
+  color: gray;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 90vh;
+  width: 200px;
+}
+
+.sidebar a {
+  font-size: 1.2em;
+  text-decoration: none;
+  color: grey;
+}
+.sidebar a:hover {
+  color: white;
+}
+.sidebar i {
+  margin: 15px 15px 15px 0;
+  font-size: 1.3em;
+}
