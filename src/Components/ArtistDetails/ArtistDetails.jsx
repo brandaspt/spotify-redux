@@ -25,7 +25,7 @@ const ArtistDetails = props => {
     return null
   }
   return (
-    <Container className="artist-details">
+    <Container fluid className="artist-details">
       <Row className="hero-section p-4">
         <img src={artistData.picture_medium} height="300px" className="img-fluid mr-3" alt="" />
         <div className="d-flex flex-column mt-auto">

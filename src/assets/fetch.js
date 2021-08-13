@@ -3,6 +3,7 @@ export const fetchGenresObj = async callback => {
     const genresObj = response.data.reduce((acc, curr) => {
       return { ...acc, [curr.name]: curr.id }
     }, {})
+    console.log(genresObj)
     callback(genresObj)
   })
 }
