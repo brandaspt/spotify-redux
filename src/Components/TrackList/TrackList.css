@@ -1,0 +1,13 @@
+#heartfill {
+  align-self: center;
+  cursor: pointer;
+}
+
+#heart {
+  cursor: pointer;
+  opacity: 0.1;
+}
+
+#heart:hover {
+  opacity: 1;
+}
