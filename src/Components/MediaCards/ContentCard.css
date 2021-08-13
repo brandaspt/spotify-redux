@@ -7,6 +7,26 @@
   color: rgb(155, 155, 155);
 }
 
+#heartfill {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  right: 10px;
+  top: 10px;
+  font-size: 25px;
+  filter: drop-shadow(1px 2px 2px #3d3d3d);
+  opacity: 1;
+  cursor: pointer;
+}
+
+#heart {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  right: 10px;
+  top: 10px;
+  font-size: 25px;
+  filter: drop-shadow(1px 2px 2px #3d3d3d);
+  opacity: 0.1;
+  cursor: pointer;
 .content-card .PlayPauseBtn {
   background-color: #1db954;
   color: white;
