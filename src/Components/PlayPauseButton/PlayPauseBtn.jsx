@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
 const PlayPauseBtn = ({ currentSong, songObj, pauseSong, playSong, addCurrentSong }) => {
   const isPlaying = currentSong.playing && currentSong.songObj.id === songObj.id
   return (
-    <div className={`PlayPauseBtn ${isPlaying && "playing"}`}>
+    <div className={isPlaying ? "playing" : ""} id="PlayPauseBtn">
       {isPlaying ? (
         <PauseFill onClick={pauseSong} />
       ) : (

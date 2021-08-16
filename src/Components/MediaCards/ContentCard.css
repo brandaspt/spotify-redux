@@ -13,7 +13,7 @@
   top: 10px;
 }
 
-.content-card .PlayPauseBtn {
+.content-card #PlayPauseBtn {
   background-color: #1db954;
   color: white;
   position: absolute;
@@ -25,17 +25,17 @@
   transform: scaleY(0);
 }
 
-.content-card:hover .PlayPauseBtn {
+.content-card:hover #PlayPauseBtn {
   opacity: 1;
   transform: scaleY(1);
 }
 
-.content-card .PlayPauseBtn:hover,
-.content-card .PlayPauseBtn.playing:hover {
+.content-card #PlayPauseBtn:hover,
+.content-card #PlayPauseBtn.playing:hover {
   transform: scale(1.2);
 }
 
-.content-card .PlayPauseBtn.playing {
+.content-card #PlayPauseBtn.playing {
   opacity: 1;
   transform: scaleY(1);
 }

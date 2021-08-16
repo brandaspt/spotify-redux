@@ -38,10 +38,10 @@ const SearchGrid = () => {
   return (
     <Container className="search-grid">
       <h2 className="text-white my-4">Search</h2>
-      <InputGroup className="mb-3 d-inline-block">
+      <InputGroup className="mb-3 d-block">
         <FormControl className="mx-auto" placeholder="Search..." value={query} onChange={e => setQuery(e.currentTarget.value)} />
       </InputGroup>
-      {data.length && <ContentGrid data={data} type="track" />}
+      {data.length > 0 && <ContentGrid data={data} type="track" />}
     </Container>
   )
 }

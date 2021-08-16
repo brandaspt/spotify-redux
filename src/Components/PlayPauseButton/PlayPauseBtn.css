@@ -1,4 +1,4 @@
-.PlayPauseBtn {
+#PlayPauseBtn {
   background-color: black;
   color: white;
   box-shadow: 0 0 5px grey;
@@ -13,6 +13,6 @@
   cursor: pointer;
 }
 
-.PlayPauseBtn:hover {
+#PlayPauseBtn:hover {
   transform: scale(1.1);
 }

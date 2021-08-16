@@ -12,6 +12,9 @@ export const initialState = {
   currentSong: {
     songObj: {},
     playing: false,
+    duration: 0,
+    currentTime: 0,
+    volume: localStorage.getItem("volume") || 0.5,
   },
 }
 
