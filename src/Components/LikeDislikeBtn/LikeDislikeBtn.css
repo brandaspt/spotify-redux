@@ -1,0 +1,14 @@
+.LikeDislikeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  cursor: pointer;
+  filter: drop-shadow(1px 2px 2px #3d3d3d);
+  transition: all 0.3s;
+  color: rgb(255, 255, 255);
+}
+
+.LikeDislikeBtn:hover {
+  transform: scale(1.1);
+}

@@ -1,13 +1,3 @@
-.heartfill_tracklist {
-  align-self: center;
-  cursor: pointer;
-}
-
-.heart_tracklist {
-  cursor: pointer;
-  opacity: 0.1;
-}
-
-#heart_tracklist:hover {
-  opacity: 1;
+.tracklist-section .LikeDislikeBtn {
+  height: 100%;
 }

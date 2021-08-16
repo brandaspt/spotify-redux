@@ -1,12 +1,7 @@
 import * as types from "../types/types"
 
-export const likeSongAction = songObj => ({
-  type: types.LIKE_SONG,
-  payload: songObj,
-})
-
-export const dislikeSongAction = songId => ({
-  type: types.DISLIKE_SONG,
+export const toggleLikeSongAction = songId => ({
+  type: types.TOGGLE_LIKE_SONG,
   payload: songId,
 })
 

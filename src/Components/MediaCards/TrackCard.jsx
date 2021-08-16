@@ -1,19 +1,10 @@
 import { Card, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { secsToMins } from "../../assets/helpers"
-import { HeartFill, Heart } from "react-bootstrap-icons"
-import { connect } from "react-redux"
+import LikeDislikeBtn from "../LikeDislikeBtn/LikeDislikeBtn"
 import PlayPauseBtn from "../PlayPauseButton/PlayPauseBtn"
 
-import { likeSongAction, dislikeSongAction } from "../../redux/actions/actions"
-
 import "./ContentCard.css"
-
-const mapStateToProps = state => state
-const mapDispatchToProps = dispatch => ({
-  likeSong: songObj => dispatch(likeSongAction(songObj)),
-  dislikeSong: songId => dispatch(dislikeSongAction(songId)),
-})
 
 const TrackCard = props => {
   return (
@@ -22,6 +13,7 @@ const TrackCard = props => {
         <div className="position-relative">
           <Card.Img variant="top" src={props.trackObj.album.cover_medium} />
           <PlayPauseBtn songObj={props.trackObj} />
+          <LikeDislikeBtn songId={props.trackObj.id} />
         </div>
         <Card.Body className="p-2 bg-transparent">
           <Card.Title className="m-0 text-center text-white">{props.trackObj.title}</Card.Title>
@@ -31,29 +23,10 @@ const TrackCard = props => {
           <Link className="text-muted" to={`/artist?id=${props.trackObj.artist.id}`}>
             <Card.Text className="m-0 text-center">{props.trackObj.artist.name}</Card.Text>
           </Link>
-          <Card.Text className="m-0 text-center">
-            {secsToMins(props.trackObj.duration)}
-            {props.likes.songs.find(_trackObj => {
-              /**
-               *
-               *   if(likes[song.id]){
-               *    likes[song.id]=false
-               * }
-               * else{
-               * likes[song.id]=true
-               * }
-               */
-              // console.log("track id", props.trackObj.id);
-              return _trackObj.id === props.trackObj.id
-            }) ? (
-              <HeartFill id="heartfill" onClick={() => props.dislikeSong(props.trackObj.id)} />
-            ) : (
-              <Heart id="heart" onClick={() => props.likeSong(props.trackObj)} />
-            )}
-          </Card.Text>
+          <Card.Text className="m-0 text-center">{secsToMins(props.trackObj.duration)}</Card.Text>
         </Card.Body>
       </Card>
     </Col>
   )
 }
-export default connect(mapStateToProps, mapDispatchToProps)(TrackCard)
+export default TrackCard

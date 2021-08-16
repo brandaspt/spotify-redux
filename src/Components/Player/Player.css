@@ -12,3 +12,7 @@
   color: grey;
   font-size: 0.7em;
 }
+
+.player .LikeDislikeBtn {
+  height: 100%;
+}

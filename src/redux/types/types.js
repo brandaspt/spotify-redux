@@ -1,5 +1,4 @@
-export const LIKE_SONG = "LIKE_SONG"
-export const DISLIKE_SONG = "DISLIKE_SONG"
+export const TOGGLE_LIKE_SONG = "TOGGLE_LIKE_SONG"
 export const ADD_CURRENT_SONG = "ADD_CURRENT_SONG"
 export const PLAY_SONG = "PLAY_SONG"
 export const PAUSE_SONG = "PAUSE_SONG"

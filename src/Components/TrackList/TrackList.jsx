@@ -1,17 +1,9 @@
 import React from "react"
 import { secsToMins } from "../../assets/helpers"
 import { Col, Row } from "react-bootstrap"
-import { connect } from "react-redux"
-import { likeSongAction, dislikeSongAction } from "../../redux/actions/actions.js"
-import { HeartFill, Heart } from "react-bootstrap-icons"
 import PlayPauseBtn from "../PlayPauseButton/PlayPauseBtn"
 import "./TrackList.css"
-
-const mapStateToProps = state => state
-const mapDispatchToProps = dispatch => ({
-  likeSong: songObj => dispatch(likeSongAction(songObj)),
-  dislikeSong: songId => dispatch(dislikeSongAction(songId)),
-})
+import LikeDislikeBtn from "../LikeDislikeBtn/LikeDislikeBtn"
 
 const TrackList = ({ likes, currentSong, likeSong, dislikeSong, tracks }) => {
   return (
@@ -34,11 +26,7 @@ const TrackList = ({ likes, currentSong, likeSong, dislikeSong, tracks }) => {
             <p className="my-0">{track.title}</p>
           </Col>
           <Col md={1}>
-            {likes.songs.find(_track => _track.id === track.id) ? (
-              <HeartFill className="heartfill_tracklist" onClick={() => dislikeSong(track.id)} />
-            ) : (
-              <Heart className="heart_tracklist" onClick={() => likeSong(track)} />
-            )}
+            <LikeDislikeBtn songId={track.id} />
           </Col>
           <Col md={1}>
             <PlayPauseBtn songObj={track} />
@@ -52,4 +40,4 @@ const TrackList = ({ likes, currentSong, likeSong, dislikeSong, tracks }) => {
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrackList)
+export default TrackList

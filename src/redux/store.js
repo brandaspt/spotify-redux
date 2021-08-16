@@ -5,9 +5,9 @@ import likesReducer from "./reducers/likes"
 
 export const initialState = {
   likes: {
-    songs: [],
-    albums: [],
-    artists: [],
+    songs: {},
+    albums: {},
+    artists: {},
   },
   currentSong: {
     songObj: {},
