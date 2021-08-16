@@ -17,3 +17,17 @@ export const playSongAction = () => ({
 export const pauseSongAction = () => ({
   type: types.PAUSE_SONG,
 })
+
+export const setDurationAction = duration => ({
+  type: types.SET_DURATION,
+  payload: duration,
+})
+
+export const setCurrentTimeAction = currentTime => ({
+  type: types.SET_CURRENT_TIME,
+  payload: currentTime,
+})
+export const setVolumeAction = volume => ({
+  type: types.SET_VOLUME,
+  payload: volume,
+})

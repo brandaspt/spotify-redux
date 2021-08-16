@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { Row, Col } from "react-bootstrap"
 import {
   ArrowRepeat,
@@ -11,7 +11,7 @@ import {
   VolumeUpFill,
 } from "react-bootstrap-icons"
 import { useDispatch, useSelector } from "react-redux"
-import { pauseSongAction, playSongAction } from "../../redux/actions/actions"
+import { pauseSongAction, playSongAction, setCurrentTimeAction, setDurationAction, setVolumeAction } from "../../redux/actions/actions"
 
 import { secsToMins } from "../../assets/helpers"
 import LikeDislikeBtn from "../LikeDislikeBtn/LikeDislikeBtn"
@@ -19,22 +19,17 @@ import LikeDislikeBtn from "../LikeDislikeBtn/LikeDislikeBtn"
 import "./Player.css"
 
 const Player = () => {
-  const [audioDuration, setAudioDuration] = useState(0)
-  const [currentTime, setCurrentTime] = useState(0)
-  const [volume, setVolume] = useState(localStorage.getItem("volume") || 0.5)
   const currentSong = useSelector(state => state.currentSong)
   const dispatch = useDispatch()
-  const pauseSong = () => dispatch(pauseSongAction())
-  const playSong = () => dispatch(playSongAction())
+
   const audioRef = useRef()
   useEffect(() => {
     currentSong.playing ? audioRef.current.play() : audioRef.current.pause()
   }, [currentSong])
 
   useEffect(() => {
-    localStorage.setItem("volume", volume)
-    audioRef.current.volume = volume
-  }, [volume])
+    audioRef.current.volume = currentSong.volume
+  }, [currentSong.volume])
 
   return (
     <footer className="player">
@@ -62,39 +57,43 @@ const Player = () => {
               <Shuffle />
               <SkipBackwardFill />
               <div className="d-flex justify-content-center align-items-center" id="player-play-pause-btn">
-                {currentSong.playing ? <PauseFill onClick={pauseSong} /> : <PlayFill onClick={playSong} />}
+                {currentSong.playing ? (
+                  <PauseFill onClick={() => dispatch(pauseSongAction())} />
+                ) : (
+                  <PlayFill onClick={() => dispatch(playSongAction())} />
+                )}
               </div>
               <SkipForwardFill />
               <ArrowRepeat />
             </div>
             <div id="time-controller" className="d-flex align-items-center justify-content-center">
-              <span>{secsToMins(currentTime)}</span>
+              <span>{secsToMins(currentSong.currentTime)}</span>
               <input
                 type="range"
                 min="0"
-                max={audioDuration}
-                value={currentTime}
+                max={currentSong.duration}
+                value={currentSong.currentTime}
                 step="1"
                 onChange={e => {
-                  setCurrentTime(e.target.value)
+                  dispatch(setCurrentTimeAction(e.target.value))
                   audioRef.current.currentTime = e.target.value
                 }}
               />
-              <span>{secsToMins(audioDuration)}</span>
+              <span>{secsToMins(currentSong.duration)}</span>
             </div>
           </div>
         </Col>
         <Col xs={3}>
           <div className="extra-controls h-100 d-flex align-items-center justify-content-center">
-            {!volume ? <VolumeMuteFill /> : <VolumeUpFill onClick={() => setVolume(0)} />}
+            {!currentSong.volume ? <VolumeMuteFill /> : <VolumeUpFill onClick={() => dispatch(setVolumeAction(0))} />}
             <input
               id="volume-range"
               min={0}
               max={1}
               step={0.1}
-              value={volume}
+              value={currentSong.volume}
               onChange={e => {
-                setVolume(e.target.value)
+                dispatch(setVolumeAction(e.target.value))
               }}
               className="ml-2"
               type="range"
@@ -107,11 +106,11 @@ const Player = () => {
         src={currentSong.songObj.preview}
         ref={audioRef}
         onEnded={() => {
-          pauseSong()
-          setCurrentTime(0)
+          dispatch(pauseSongAction())
+          dispatch(setCurrentTimeAction(0))
         }}
-        onLoadedData={e => setAudioDuration(e.target.duration)}
-        onTimeUpdate={e => setCurrentTime(e.target.currentTime)}
+        onLoadedData={e => dispatch(setDurationAction(e.target.duration))}
+        onTimeUpdate={e => dispatch(setCurrentTimeAction(e.target.currentTime))}
       ></audio>
     </footer>
   )

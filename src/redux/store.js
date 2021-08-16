@@ -1,5 +1,8 @@
 import { createStore, combineReducers } from "redux"
 
+import { persistReducer, persistStore } from "redux-persist"
+import storage from "redux-persist/lib/storage"
+
 import currentSongReducer from "./reducers/currentSong"
 import likesReducer from "./reducers/likes"
 
@@ -14,8 +17,13 @@ export const initialState = {
     playing: false,
     duration: 0,
     currentTime: 0,
-    volume: localStorage.getItem("volume") || 0.5,
+    volume: 0.5,
   },
+}
+
+const persistConfig = {
+  key: "root",
+  storage,
 }
 
 const mainReducer = combineReducers({
@@ -23,6 +31,9 @@ const mainReducer = combineReducers({
   currentSong: currentSongReducer,
 })
 
-const store = createStore(mainReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const persistedReducer = persistReducer(persistConfig, mainReducer)
 
-export default store
+const store = createStore(persistedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const persistor = persistStore(store)
+
+export { store, persistor }
